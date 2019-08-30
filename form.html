@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+#edit-icon:hover{
+cursor:pointer;
+}
+#delete-icon:hover{
+cursor:pointer;
+}
+table, th, td {
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+.table-display{
+margin-top:30px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+#display-table{
+margin-top:30px;
+}
+#add-form{
+margin-top:40px;
+width:50%;
+
+    border: 2px solid black;
+    padding: 2em;
+    background: gainsboro;
+	    border-radius: 17px;
+}
+button#btn-des {
+    width: 233px;
+}
+button#btn-des:hover {
+    color: white;
+    background: black;
+}
+table th{
+background:gray;
+color:white;
+}
+</style>
+<body>
+
+<div class="container" id='add-form'>
+  
+  <form  name='myForm'>
+     <center><h4>ADD DATA</h4></center>
+    <div class="form-group">
+      <label>Roll No:</label>
+      <input type="text" class="form-control" id="rollno" placeholder="Roll No" name='rollno' >
+    </div>
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" name='username' >
+    </div>
+    <div class="form-group">
+	 <label>Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" name='pass' >
+    </div>
+    
+  </form>
+  <input type="submit" class="btn btn-primary" value='ADD' onclick="saveInput();" id='btn-add'>
+  <input type="submit" class="btn btn-primary" value='UPDATE' style='display:none;' onclick="updatedata();" id='btn-update'>
+</div>
+
+
+<div class="container" id='display-table'>
+  <center><h4>Display Data</h4></center>
+  <div class="table-display">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Roll No</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        
+      </tr>
+    </thead>
+    
+      <tbody id="allitems">
+    
+    </tbody>
+  </table>
+  </div>
+</div>
+  <script>
+ 
+  this.result = document.getElementById('allitems');
+  var frm = document.getElementsByName('myForm');
+ 
+  var data = '';
+  var ind='';
+ 
+  var items=[];
+
+    function saveInput() {
+	 
+	 var x = document.getElementById("rollno").value;
+	 var y = document.getElementById("username").value;
+     var z = document.getElementById("password").value;
+	 var letters = /^[a-z]*$/i;
+     
+	  if (x == "") {
+    alert("Roll no is required");
+    return false;
+  }
+     else if (/\D/.test(x)) {
+    alert("Please type only Number On Roll Number Field");
+    return false;
+  }
+  else if (y == "") {
+    alert("Username is required");
+    return false;
+  }
+  else if (!y.match(/[a-zA-Z]+$/)) {
+    alert("Please type only Letters On  Username Field");
+    return false;
+  }
+  else if (z == "") {
+    alert("Password is required");
+    return false;
+  }
+  
+	else{
+	     
+		 data=''; 
+        var Roll = document.getElementById("rollno").value;
+		var User = document.getElementById("username").value;
+		var pass = document.getElementById("password").value;
+		items.push({rollno:Roll,name:User,password:pass});
+		
+		 document.getElementById("rollno").value="";
+         document.getElementById("username").value="";
+         document.getElementById("password").value="";
+		 var index= items.length-1
+		 alert(index);
+		
+		 
+        data += '<tr id="rows">';
+        data += '<td>' + Roll + '</td>';
+		data += '<td>' + User + '</td>';
+		data += '<td>' + pass + '</td>';
+        data += '<td><button onclick="edit('+index+')" class="ece">Edit</button></td>';
+        data += '<td><button onclick="SomeDeleteRowFunction('+index+');">Delete</button></td>';
+        data += '</tr>';
+		
+		
+		
+		
+      
+	   
+	   this.result.innerHTML += data;
+		
+		
+		}
+		
+	
+	}
+	
+function SomeDeleteRowFunction(del) {
+
+items.splice(del,1);
+diplay()
+}
+
+function edit(ed)
+{
+
+document.getElementById("btn-add").style.display = "none";
+document.getElementById("btn-update").style.display = "block";
+document.getElementById("rollno").value=items[ed].rollno;
+document.getElementById("username").value=items[ed].name;
+document.getElementById("password").value=items[ed].password;
+
+ind=ed;
+
+}
+
+function updatedata()
+{
+
+
+document.getElementById("btn-add").style.display = "block";
+document.getElementById("btn-update").style.display = "none";
+  var Roll = document.getElementById("rollno").value;
+		var User = document.getElementById("username").value;
+		var pass = document.getElementById("password").value;
+
+items[ind].rollno=Roll;
+
+items[ind].name=User;
+
+items[ind].password=pass;
+ document.getElementById("rollno").value="";
+         document.getElementById("username").value="";
+         document.getElementById("password").value="";
+
+  
+
+diplay()
+
+ }
+ function diplay(){
+		data=''
+		
+	for(let i=0;i<items.length;i++){
+        data += '<tr id="rows">';
+		
+        data += '<td>' + items[i].rollno + '</td>';
+		data += '<td>' + items[i].name + '</td>';
+		data += '<td>' + items[i].password + '</td>';
+        data += '<td><button onclick="edit('+i+')" class="ece">Edit</button></td>';
+        data += '<td><button onclick="SomeDeleteRowFunction('+i+');">Delete</button></td>';
+        data += '</tr>';
+	}
+	   this.result.innerHTML = data;
+ }
+
+  </script>
+
+</body>
+</html>
