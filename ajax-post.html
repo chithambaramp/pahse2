@@ -1,0 +1,40 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  var items={"name":"telkjkjpopst","salary":"123","age":"23","employee_name":'oi'}
+  
+    $(document).ready(function(){
+        $("#submit").click(function(){
+
+		
+        $.ajax({
+            type: 'POST',
+            url: "http://dummy.restapiexample.com/api/v1/create",
+			
+			datatype:'json',
+			data:items,
+            success:function(data){
+			
+			debugger;
+			alert('posted');
+             
+		
+            },
+			error:function(jqXHR, textStatus, error){
+			
+		alert(textStatus);
+			
+			}
+        });
+ 
+    });
+	
+});
+</script>
+</head>
+
+<body>
+<input type="button" id="submit" value="submit" />
+</body>
+ </html>
