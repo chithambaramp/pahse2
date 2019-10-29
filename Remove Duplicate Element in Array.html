@@ -1,0 +1,17 @@
+Remove Duplicate in array elements
+
+ function getUnique(array){
+        var uniqueArray = [];
+        
+    
+        for(i=0; i < array.length; i++){
+            if(uniqueArray.indexOf(array[i]) === -1) {
+                uniqueArray.push(array[i]);
+            }
+        }
+        return uniqueArray;
+    }
+    
+    var names = ["a", "b", "c", "c", "d", "e"];
+    var uniqueNames = getUnique(names);
+    console.log(uniqueNames);
