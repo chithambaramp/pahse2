@@ -1,0 +1,32 @@
+Get Input From user's
+
+<html>
+<body>
+
+<button onclick="myFunction()">Click</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var text;
+  var names = window.prompt("What's your name?");
+  switch(names) {
+    case "chithambaram":
+      text = "Hello Chithambaram";
+      break;
+    case "arun":
+      text = "Hello Arun";
+      break;
+    case "dhilip":
+      text = "Hello Dhilip";
+      break;
+    default:
+      text = "Error!";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>

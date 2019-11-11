@@ -1,0 +1,26 @@
+ Armsstrong Number
+ 
+ function Armstrong(number)
+			{
+				var result,number,remainder,addition = 0;
+			
+
+			result=number;
+				while(number > 0)
+				{
+					remainder = number%10;
+					addition = addition + remainder*remainder*remainder;
+					number = parseInt(number/10);
+				}
+
+				if(addition == result)
+				{
+					console.log("-The inputed number is Armstrong");
+				}
+				else
+				{
+					console.log("-The inputed number is not Armstrong");
+				}
+			}
+ Armstrong(376)
+ 

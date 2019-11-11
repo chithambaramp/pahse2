@@ -1,0 +1,21 @@
+Reversing character
+
+function myFunction(str) {
+  
+  var output = '';
+  for (var i = 0;i < str.length; i++) {
+    var character = str[i];
+    if (character == character.toLowerCase()) {
+      
+      output = output + character.toUpperCase();
+	 
+    } else {
+      
+      output = output + character.toLowerCase();
+	  
+    }
+  }
+ console.log(output);
+}
+
+myFunction("HAI")

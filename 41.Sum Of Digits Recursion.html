@@ -1,0 +1,10 @@
+function sumDigits(number) {
+    var remainder = number % 10;
+    var sum = remainder;
+    if(number >= 10) {
+        var result = Math.floor(number / 10);
+        sum += sumDigits(result); 
+    }
+    return sum;
+}
+sumDigits(34)

@@ -1,0 +1,16 @@
+Fibanoci
+
+function fib(N){
+  var A = 0;
+    var B = 1;
+    var C;
+   for(var i=1; i <= N;i++)
+    {
+        C = A + B;
+        A = B;
+        B = C;
+
+        console.log(C);
+    }
+}
+fib(7)
