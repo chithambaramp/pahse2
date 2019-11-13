@@ -1,0 +1,11 @@
+function trace(matrix) {
+ 
+    var tr = 0;
+    for (let row = 0; row < matrix.length; row++) {
+        tr += matrix[row][row];
+       
+    }
+    console.log(tr);
+}
+var mat = [[2, 6, 7], [6, 2, 8], [0, 1, 6]]
+trace(mat);

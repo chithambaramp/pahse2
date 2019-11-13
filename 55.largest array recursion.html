@@ -1,0 +1,11 @@
+
+function findmax(A,n){
+ if(n == 1)
+{ 
+        return A[0]; 
+          }
+        return Math.max(A[n-1], findmax(A, n-1)); 
+		}
+		var c=[1, 4, 45, 600, -50, 10, 2];
+		var b=c.length;
+		findmax(c,b)

@@ -1,0 +1,17 @@
+function sub(a, b) {
+var result=[];
+result=new Array(a.length);
+for(var i=0;i<result.length;i++){
+result[i]=new Array(a[i].length);
+for(var j=0;j<result[i].length;j++){
+result[i][j]=a[i][j]+b[i][j];
+}
+}
+return result;
+}
+
+
+
+var a = [[8, 3],[3, 6]],
+    b = [[1, 2], [6, 8]];
+sub(a, b);
